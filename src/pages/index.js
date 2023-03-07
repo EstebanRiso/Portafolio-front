@@ -56,6 +56,7 @@ export default function Home() {
                     width={620} 
                     height={480}
                     onLoadingComplete={() => setLoaded(true)}
+                    alt={'esteban_riso'}
                 />
             </div>
   }
