@@ -109,7 +109,7 @@ export default function Home() {
                     <div>
                       <p>Este proyecto contempla la creación de una aplicación fullstack para el minvu en react de frontend y de backend nodejs express con el orm de sequelize</p>
                       <p>Tambien se proveyo la documentación, siguiendo todos los procesos formales de la creación de historias de usuario, los casos de uso, por lo tanto se entrevistó</p>
-                      <p>al departamento encargado de pagos del Minvu para conseguir los requerimientos, en el enlace a continuación pueden ver la aplicación, siendo ustedes los "encargados de los giros"</p>
+                      <p>al departamento encargado de pagos del Minvu para conseguir los requerimientos, en el enlace a continuación pueden ver la aplicación, siendo ustedes los 'encargados de los giros'</p>
                       <p>para que vean como funciona el programa</p>
                     </div> : 
                   <div></div>}
