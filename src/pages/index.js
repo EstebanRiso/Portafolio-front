@@ -47,8 +47,7 @@ export default function Home() {
 
 
   const genImage=()=>{
-    const image_src="/stiv_"+iterator+".png"
-    console.log("loaded está cargado?: "+loaded);
+    const image_src='/stiv_'+iterator+'.png'
 
     return <div className={`${styles.image_container} ${loaded? styles.loaded : ''}`}>
                 <Image  
