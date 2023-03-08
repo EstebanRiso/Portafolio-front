@@ -40,7 +40,7 @@ export default function Home() {
           })
         },500);
       
-    }, 3000)
+    }, 4000)
     return () => clearInterval(timer)
   },[])
 
@@ -49,15 +49,18 @@ export default function Home() {
   const genImage=()=>{
     const image_src='/stiv_'+iterator+'.png'
 
-    return <div className={`${styles.image_container} ${loaded? styles.loaded : ''}`}>
-                <Image  
-                    src={image_src} 
-                    width={620} 
-                    height={480}
-                    onLoadingComplete={() => setLoaded(true)}
-                    alt={'esteban_riso'}
-                />
-            </div>
+    return <>
+              <div className={`${styles.image_container} ${loaded? styles.loaded : ''}`}>
+                  <Image  
+                      src={image_src} 
+                      width={620} 
+                      height={480}
+                      onLoadingComplete={() => setLoaded(true)}
+                      alt={'esteban_riso'}
+                      style={{ position: 'relative', zIndex: '1'}}
+                  />
+                </div>
+            </>
   }
   
   
@@ -77,12 +80,24 @@ export default function Home() {
         <div className={styles.content}> 
 
               <div className={styles.imagen_holder}>
+                 <Image  
+                      src={'/logo.png'} 
+                      width={1280} 
+                      height={480}
+                      alt={'logo'}
+                      style={{ position: 'absolute', top:'-200px'}}
+                  />
                 {genImage()}
+                <p className={styles.presentacion}> <br></br>
+                      ¡Hola!, me llamo Esteban Risopatrón, soy un Ingeniero Informático de la Universidad del 
+                      Bío-Bío y te doy una cordial bienvenida a mi página web.
+                      <br></br><br></br>Mi misión es satisfacer a mis clientes y empleadores por igual con todo 
+                      lo relacionado sobre el rubro de la informática.
+                </p>
+
               </div>
 
-              <div className={styles.presentacion}>
-                <p> Hola me llamo Esteban Risopatrón, soy un ingeniero informático de la Universidad del Bío-Bío y te doy una cordial bienvenida a mi página web portafolio,
-                mi misión es satisfacer a mis clientes y empleadores por igual con todo lo relacionado sobre el rubro de la informática.</p>
+              <div >
                 <br></br>
                 <p>La proactividad y atención al detalle son mis mayores ventajas competitivas, y en esta página web veras todos mis proyectos que haré en el transcurso de mi carrera</p>
               </div>

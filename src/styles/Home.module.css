@@ -13,6 +13,9 @@
 }
 
 .imagen_holder{
+  display: flex;
+  position: relative;
+  flex-flow: row;
   align-content:center;
   align-items: center;
   background-color: rgb(66, 66, 66);
@@ -20,6 +23,9 @@
 
 .presentacion{
   margin:30px;
+  font-size: 20px;
+  color:rgb(209, 209, 209);
+  font-family:sans-serif;
 }
 
 .hud{
@@ -29,6 +35,8 @@
   flex-flow:row;
   background-color: rgb(46, 62, 146);
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 
