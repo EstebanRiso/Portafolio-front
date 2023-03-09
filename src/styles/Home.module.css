@@ -14,6 +14,7 @@
 
 .imagen_holder{
   display: flex;
+  height: 100vh;
   position: relative;
   flex-flow: row;
   align-content:center;
@@ -28,15 +29,23 @@
   font-family:sans-serif;
 }
 
+.presentacion2{
+  margin:30px;
+  font-size: 20px;
+  color:rgb(0, 0, 0);
+  font-family:sans-serif;
+}
+
 .hud{
   display:flex;
   flex-direction: column-reverse;
   height: 100px;
+  width: 100%;
   flex-flow:row;
   background-color: rgb(46, 62, 146);
   align-items: center;
-  position: relative;
-  z-index: 2;
+  position: fixed;
+  z-index: 999;
 }
 
 
@@ -87,10 +96,9 @@
   box-sizing: border-box;
   position: relative;
   display: block;
-  transform: scale(var(--ggs,1));
   width: 22px;
   height: 22px;
-  border: 2px solid;
+  border: 2px ;
   border-radius: 100px
 }
 
@@ -132,4 +140,25 @@
 }
 .image_container.loaded {
   opacity: 1;
+}
+
+
+
+
+.rotate_right {
+  transition: transform 0.5s ease-in-out;
+  transform: rotate(180deg);
+}
+
+.rotate_right.rotate_active {
+  transform: rotate(180deg);
+}
+
+.rotate_left {
+  transition: transform 0.5s ease-in-out;
+  transform: rotate(180deg);
+}
+
+.rotate_left.rotate_active {
+  transform: rotate(180deg);
 }

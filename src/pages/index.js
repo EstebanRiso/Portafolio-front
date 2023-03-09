@@ -14,12 +14,18 @@ export default function Home() {
     button2: false,
     button3: false,
   });
+  const [direcciones,setDirecciones]=useState({
+     direccion1:'right',
+     direccion2:'right',
+     direccion3:'right',
+  })
 
   const [iterator,setIterator]=useState(1);
-  
   const [loaded, setLoaded] = useState(false)
 
+
   const handleButtonClick = (button) => {
+    
     setButtonStates((prevState) => ({
       ...prevState,
       [button]: !prevState[button],
@@ -57,10 +63,17 @@ export default function Home() {
                       height={480}
                       onLoadingComplete={() => setLoaded(true)}
                       alt={'esteban_riso'}
-                      style={{ position: 'relative', zIndex: '1'}}
+                      style={{display:'block', position: 'relative', zIndex: '1', top:'120px'}}
                   />
                 </div>
             </>
+  }
+
+  const genArrow=(direccion)=>{
+    setDirecciones((prevState) => ({
+      ...prevState,
+      [direccion]: 'right'? 'left':'right',
+    }));
   }
   
   
@@ -71,11 +84,11 @@ export default function Home() {
           Bienvenido al Portafolio de Esteban Risopatrón
       </Head>
       <main className={styles.main}>
-        <div className={styles.hud}>
+        <nav className={styles.hud}>
             <button className={styles.item_hud}>¿Quién soy?</button>
             <button className={styles.item_hud}>Trabajos</button>
             <button className={styles.item_hud}>Contacto</button>
-        </div>
+        </nav>
 
         <div className={styles.content}> 
 
@@ -85,10 +98,10 @@ export default function Home() {
                       width={1280} 
                       height={480}
                       alt={'logo'}
-                      style={{ position: 'absolute', top:'-200px'}}
+                      style={{ position: 'absolute', top:'-50px'}}
                   />
                 {genImage()}
-                <p className={styles.presentacion}> <br></br>
+                <p className={styles.presentacion}> <br></br><br></br>
                       ¡Hola!, me llamo Esteban Risopatrón, soy un Ingeniero Informático de la Universidad del 
                       Bío-Bío y te doy una cordial bienvenida a mi página web.
                       <br></br><br></br>Mi misión es satisfacer a mis clientes y empleadores por igual con todo 
@@ -96,17 +109,14 @@ export default function Home() {
                 </p>
 
               </div>
-
-              <div >
-                <br></br>
-                <p>La proactividad y atención al detalle son mis mayores ventajas competitivas, y en esta página web veras todos mis proyectos que haré en el transcurso de mi carrera</p>
-              </div>
         
-              <div className={styles.presentacion}>
+              <div className={styles.presentacion2}>
                   Proyectos
                 <div>Reconocimiento de Imagenes</div>
-                <button className={styles.proyectos_button} onClick={() => handleButtonClick('button1')}>
-                  
+                <button className={styles.proyectos_button} onClick={() => {handleButtonClick('button1'); genArrow('direccion1')}}>
+                  <Image src={'/arrow_down.png'} width={15} height={15} 
+                    className={`${styles[`rotate_${direcciones.direccion1}`]}${buttonStates.button1 ? styles.rotate_active : '' }`}  
+                    style={{ position: 'absolute', left:'3.5px',top:'3px'}}/>
                 </button>
                 {buttonStates.button1 ? 
                   <div>
@@ -117,8 +127,10 @@ export default function Home() {
                   </div> :
                   <div></div>}
                 <div>Creador de Giro de Ahorros del Minvu</div>
-                  <button onClick={() => handleButtonClick('button2')}>
-                    click
+                  <button  className={styles.proyectos_button}  onClick={() =>{ handleButtonClick('button2'); genArrow('direccion2')}}>
+                    <Image src={'/arrow_down.png'} width={15} height={15} 
+                      className={`${styles[`rotate_${direcciones.direccion2}`]}${buttonStates.button2 ? styles.rotate_active : '' }`}  
+                      style={{ position: 'absolute', left:'3.5px',top:'3px'}}/>
                   </button>
                   { buttonStates.button2 ? 
                     <div>
@@ -129,8 +141,10 @@ export default function Home() {
                     </div> : 
                   <div></div>}
                 <div>Knn en k<sup>2</sup>-tree</div>
-                  <button onClick={() => handleButtonClick('button3')}>
-                      click
+                  <button  className={styles.proyectos_button}  onClick={() => { handleButtonClick('button3'); genArrow('direccion3')}}>
+                    <Image src={'/arrow_down.png'} width={15} height={15} 
+                      className={`${styles[`rotate_${direcciones.direccion2}`]}${buttonStates.button3 ? styles.rotate_active : '' }`}  
+                      style={{ position: 'absolute', left:'3.5px',top:'3px'}}/>
                     </button>
                     {buttonStates.button3 ?
                       <div>
