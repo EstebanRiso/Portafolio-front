@@ -31,13 +31,13 @@
 
 .presentacion2{
   margin:30px;
+  height: 100vh;
   font-size: 20px;
   color:rgb(0, 0, 0);
   font-family:sans-serif;
 }
 
 .hud{
-  display:flex;
   flex-direction: column-reverse;
   height: 100px;
   width: 100%;
@@ -161,4 +161,12 @@
 
 .rotate_left.rotate_active {
   transform: rotate(180deg);
+}
+
+
+.titular{
+  font-size: 50;
+  font-family: 'Franklin Gothic Medium';
+  color:white;
+  text-shadow: 0 0 2px #000000;
 }

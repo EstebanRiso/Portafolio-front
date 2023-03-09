@@ -3,17 +3,24 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import React, { useState,useEffect } from 'react';
+import { useRef } from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   
-   
+  
+  const myRef = useRef(null);
+
+
+  const [showNavbar, setShowNavbar] = useState(true);
+
   const [buttonStates, setButtonStates] = useState({
     button1: false,
     button2: false,
     button3: false,
   });
+
   const [direcciones,setDirecciones]=useState({
      direccion1:'right',
      direccion2:'right',
@@ -31,7 +38,34 @@ export default function Home() {
       [button]: !prevState[button],
     }));
   };
+
+  const scrollToRef = (ref) => {
+    window.scrollTo({
+      top: ref.current.offsetTop,
+      behavior: 'smooth'
+    });
+  };
   
+
+  function handleScroll() {
+    const scrollY = window.scrollY;
+    if (scrollY > 650) {
+      setShowNavbar(false);
+    } else {
+      setShowNavbar(true);
+    }
+  }
+
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+  
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
 
   useEffect(() => {
     const timer=setInterval(()=>{
@@ -47,7 +81,11 @@ export default function Home() {
         },500);
       
     }, 4000)
-    return () => clearInterval(timer)
+
+
+    return () => {
+      clearInterval(timer);
+    }
   },[])
 
 
@@ -84,9 +122,9 @@ export default function Home() {
           Bienvenido al Portafolio de Esteban Risopatrón
       </Head>
       <main className={styles.main}>
-        <nav className={styles.hud}>
+        <nav style={{ display: showNavbar ? 'flex' : 'none' }} className={styles.hud}>
             <button className={styles.item_hud}>¿Quién soy?</button>
-            <button className={styles.item_hud}>Trabajos</button>
+            <button className={styles.item_hud} onClick={()=>scrollToRef(myRef)}>Proyectos</button>
             <button className={styles.item_hud}>Contacto</button>
         </nav>
 
@@ -111,8 +149,8 @@ export default function Home() {
               </div>
         
               <div className={styles.presentacion2}>
-                  Proyectos
-                <div>Reconocimiento de Imagenes</div>
+                  <h1 ref={myRef} className={styles.titular}>PROYECTOS</h1>
+                <p style={{fontWeight:'bold',fontSize:'30px',textAlign:'center'}}>Reconocimiento de Imagenes</p>
                 <button className={styles.proyectos_button} onClick={() => {handleButtonClick('button1'); genArrow('direccion1')}}>
                   <Image src={'/arrow_down.png'} width={15} height={15} 
                     className={`${styles[`rotate_${direcciones.direccion1}`]}${buttonStates.button1 ? styles.rotate_active : '' }`}  
@@ -120,13 +158,13 @@ export default function Home() {
                 </button>
                 {buttonStates.button1 ? 
                   <div>
-                    <p>EL proyecto de reconocimiento de Imagenes lo hice en la Universidad del Bío Bío, como parte de un trabajo solicitado por</p>
-                    <p>la facultad de ingenieria CIM UBB, el cual contemplaba la realización de un reconocedor de imagenes entrenado para reconocer herramientas</p>
-                    <p>utilizando la API de inteligencia artificial Pytorch de Facebook, actualmente Meta.</p>
-                    <p>Esta aplicación solo está para escritorio,la versión que poseo no tiene muchos datasets, por lo que es bastante proclive a errores, aqui el enlace de descarga</p>
+                    <p>EL proyecto de reconocimiento de Imagenes lo hice en la Universidad del Bío Bío, como parte de un trabajo solicitado procesos
+                        la facultad de ingenieria CIM UBB, el cual contemplaba la realización de un reconocedor de imagenes entrenado para reconocer herramientas
+                        utilizando la API de inteligencia artificial Pytorch de Facebook, actualmente Meta.
+                        Esta aplicación solo está para escritorio,la versión que poseo no tiene muchos datasets, por lo que es bastante proclive a errores, aqui el enlace de descarga</p>
                   </div> :
                   <div></div>}
-                <div>Creador de Giro de Ahorros del Minvu</div>
+                <p style={{fontWeight:'bold',fontSize:'30px',textAlign:'center'}}>Giro de Ahorros del Minvu</p>
                   <button  className={styles.proyectos_button}  onClick={() =>{ handleButtonClick('button2'); genArrow('direccion2')}}>
                     <Image src={'/arrow_down.png'} width={15} height={15} 
                       className={`${styles[`rotate_${direcciones.direccion2}`]}${buttonStates.button2 ? styles.rotate_active : '' }`}  
@@ -140,7 +178,7 @@ export default function Home() {
                       <p>para que vean como funciona el programa</p>
                     </div> : 
                   <div></div>}
-                <div>Knn en k<sup>2</sup>-tree</div>
+                <p style={{fontWeight:'bold',fontSize:'30px',textAlign:'center'}}>Knn en k<sup>2</sup>-tree</p>
                   <button  className={styles.proyectos_button}  onClick={() => { handleButtonClick('button3'); genArrow('direccion3')}}>
                     <Image src={'/arrow_down.png'} width={15} height={15} 
                       className={`${styles[`rotate_${direcciones.direccion2}`]}${buttonStates.button3 ? styles.rotate_active : '' }`}  
