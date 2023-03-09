@@ -99,6 +99,7 @@ export default function Home() {
                       src={image_src} 
                       width={620} 
                       height={480}
+                      priority={true}
                       onLoadingComplete={() => setLoaded(true)}
                       alt={'esteban_riso'}
                       style={{display:'block', position: 'relative', zIndex: '1', top:'120px'}}
@@ -133,6 +134,7 @@ export default function Home() {
               <div className={styles.imagen_holder}>
                  <Image  
                       src={'/logo.png'} 
+                      priority={true}
                       width={1280} 
                       height={480}
                       alt={'logo'}
@@ -153,7 +155,7 @@ export default function Home() {
                   <br></br><br></br> <br></br><br></br>    
                   <p className={styles.subtitulo}>Reconocimiento de Imagenes</p>
                     <button className={styles.proyectos_button} onClick={() => {handleButtonClick('button1'); genArrow('direccion1')}}>
-                      <Image src={'/arrow_down.png'} width={15} height={15} 
+                      <Image  priority={true} src={'/arrow_down.png'} width={15} height={15} 
                       className={`${styles[`rotate_${direcciones.direccion1}`]}${buttonStates.button1 ? styles.rotate_active : '' }`}  
                     style={{ position: 'absolute', left:'3.5px',top:'3px'}}/>
                     </button>
@@ -167,7 +169,7 @@ export default function Home() {
                   <br></br><br></br>
                   <p className={styles.subtitulo}>Giro de Ahorros del Minvu</p>
                     <button  className={styles.proyectos_button}  onClick={() =>{ handleButtonClick('button2'); genArrow('direccion2')}}>
-                      <Image src={'/arrow_down.png'} width={15} height={15} 
+                      <Image priority={true} src={'/arrow_down.png'} width={15} height={15} 
                         className={`${styles[`rotate_${direcciones.direccion2}`]}${buttonStates.button2 ? styles.rotate_active : '' }`}  
                         style={{ position: 'absolute', left:'3.5px',top:'3px'}}/>
                     </button>
@@ -186,7 +188,7 @@ export default function Home() {
                 <br></br><br></br>  
                 <p className={styles.subtitulo}>Knn en k<sup>2</sup>-tree</p>
                   <button  className={styles.proyectos_button}  onClick={() => { handleButtonClick('button3'); genArrow('direccion3')}}>
-                    <Image src={'/arrow_down.png'} width={15} height={15} 
+                    <Image priority={true} src={'/arrow_down.png'} width={15} height={15} 
                       className={`${styles[`rotate_${direcciones.direccion2}`]}${buttonStates.button3 ? styles.rotate_active : '' }`}  
                       style={{ position: 'absolute', left:'3.5px',top:'3px'}}/>
                     </button>
