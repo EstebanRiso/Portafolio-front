@@ -11,7 +11,7 @@ export default function Home() {
   
   
   const myRef = useRef(null);
-
+  const myRef2 = useRef(null);
 
   const [showNavbar, setShowNavbar] = useState(true);
 
@@ -125,7 +125,7 @@ export default function Home() {
         <nav style={{ display: showNavbar ? 'flex' : 'none' }} className={styles.hud}>
             <button className={styles.item_hud}>¿Quién soy?</button>
             <button className={styles.item_hud} onClick={()=>scrollToRef(myRef)}>Proyectos</button>
-            <button className={styles.item_hud}>Contacto</button>
+            <button className={styles.item_hud} onClick={()=>scrollToRef(myRef2)}>Contacto</button>
         </nav>
 
         <div className={styles.content}> 
@@ -150,35 +150,41 @@ export default function Home() {
         
               <div className={styles.presentacion2}>
                   <h1 ref={myRef} className={styles.titular}>PROYECTOS</h1>
-                <p style={{fontWeight:'bold',fontSize:'30px',textAlign:'center'}}>Reconocimiento de Imagenes</p>
-                <button className={styles.proyectos_button} onClick={() => {handleButtonClick('button1'); genArrow('direccion1')}}>
-                  <Image src={'/arrow_down.png'} width={15} height={15} 
-                    className={`${styles[`rotate_${direcciones.direccion1}`]}${buttonStates.button1 ? styles.rotate_active : '' }`}  
+                  <br></br><br></br> <br></br><br></br>    
+                  <p className={styles.subtitulo}>Reconocimiento de Imagenes</p>
+                    <button className={styles.proyectos_button} onClick={() => {handleButtonClick('button1'); genArrow('direccion1')}}>
+                      <Image src={'/arrow_down.png'} width={15} height={15} 
+                      className={`${styles[`rotate_${direcciones.direccion1}`]}${buttonStates.button1 ? styles.rotate_active : '' }`}  
                     style={{ position: 'absolute', left:'3.5px',top:'3px'}}/>
-                </button>
-                {buttonStates.button1 ? 
-                  <div>
-                    <p>EL proyecto de reconocimiento de Imagenes lo hice en la Universidad del Bío Bío, como parte de un trabajo solicitado procesos
-                        la facultad de ingenieria CIM UBB, el cual contemplaba la realización de un reconocedor de imagenes entrenado para reconocer herramientas
-                        utilizando la API de inteligencia artificial Pytorch de Facebook, actualmente Meta.
-                        Esta aplicación solo está para escritorio,la versión que poseo no tiene muchos datasets, por lo que es bastante proclive a errores, aqui el enlace de descarga</p>
-                  </div> :
-                  <div></div>}
-                <p style={{fontWeight:'bold',fontSize:'30px',textAlign:'center'}}>Giro de Ahorros del Minvu</p>
-                  <button  className={styles.proyectos_button}  onClick={() =>{ handleButtonClick('button2'); genArrow('direccion2')}}>
-                    <Image src={'/arrow_down.png'} width={15} height={15} 
-                      className={`${styles[`rotate_${direcciones.direccion2}`]}${buttonStates.button2 ? styles.rotate_active : '' }`}  
-                      style={{ position: 'absolute', left:'3.5px',top:'3px'}}/>
-                  </button>
+                    </button>
+                    {buttonStates.button1 ? 
+                    <div>
+                        <p>EL proyecto de reconocimiento de Imagenes lo hice en la Universidad del Bío Bío, como parte de un trabajo solicitado procesos
+                          la facultad de ingenieria CIM UBB, el cual contemplaba la realización de un reconocedor de imagenes entrenado para reconocer herramientas
+                          utilizando la API de inteligencia artificial Pytorch de Facebook, actualmente Meta.
+                          Esta aplicación solo está para escritorio,la versión que poseo no tiene muchos datasets, por lo que es bastante proclive a errores, aqui el enlace de descarga</p>
+                    </div> : <div></div>}
+                  <br></br><br></br>
+                  <p className={styles.subtitulo}>Giro de Ahorros del Minvu</p>
+                    <button  className={styles.proyectos_button}  onClick={() =>{ handleButtonClick('button2'); genArrow('direccion2')}}>
+                      <Image src={'/arrow_down.png'} width={15} height={15} 
+                        className={`${styles[`rotate_${direcciones.direccion2}`]}${buttonStates.button2 ? styles.rotate_active : '' }`}  
+                        style={{ position: 'absolute', left:'3.5px',top:'3px'}}/>
+                    </button>
                   { buttonStates.button2 ? 
                     <div>
-                      <p>Este proyecto contempla la creación de una aplicación fullstack para el minvu en react de frontend y de backend nodejs express con el orm de sequelize</p>
-                      <p>Tambien se proveyo la documentación, siguiendo todos los procesos formales de la creación de historias de usuario, los casos de uso, por lo tanto se entrevistó</p>
-                      <p>al departamento encargado de pagos del Minvu para conseguir los requerimientos, en el enlace a continuación pueden ver la aplicación, siendo ustedes los encargados de los giros</p>
-                      <p>para que vean como funciona el programa</p>
+                      <p>Este proyecto contempla la creación de una aplicación fullstack para el minvu en react de frontend y de backend nodejs express con el orm de sequelize
+                      Tambien se proveyo la documentación, siguiendo todos los procesos formales de la creación de historias de usuario, 
+                      los casos de uso, por lo tanto se entrevistó al departamento encargado de pagos del Minvu para conseguir los 
+                      requerimientos, en el enlace a continuación pueden ver la aplicación, siendo ustedes los encargados de los giros
+                      para que vean como funciona el programa </p>
                     </div> : 
                   <div></div>}
-                <p style={{fontWeight:'bold',fontSize:'30px',textAlign:'center'}}>Knn en k<sup>2</sup>-tree</p>
+
+
+
+                <br></br><br></br>  
+                <p className={styles.subtitulo}>Knn en k<sup>2</sup>-tree</p>
                   <button  className={styles.proyectos_button}  onClick={() => { handleButtonClick('button3'); genArrow('direccion3')}}>
                     <Image src={'/arrow_down.png'} width={15} height={15} 
                       className={`${styles[`rotate_${direcciones.direccion2}`]}${buttonStates.button3 ? styles.rotate_active : '' }`}  
@@ -186,13 +192,19 @@ export default function Home() {
                     </button>
                     {buttonStates.button3 ?
                       <div>
-                        <p> Este proyecto es mi proyecto de titulación, como tiene mucha teoria de por medio sere un poco simple en explicar, aunque tambien tendrán descargable mi informe si quieren entrar en detalle</p>
-                        <p> </p> 
+                        <p> Este proyecto es mi proyecto de titulación, como tiene mucha teoria de por medio sere un poco simple en explicar, 
+                          aunque tambien tendrán descargable mi 
+                          informe si quieren entrar en detalle</p>
                       </div>
                       :<div></div>
                     }
             
               </div>
+              
+              <div className={styles.presentacion2}>
+                <h1 ref={myRef2} className={styles.titular}>CONTACTO</h1>
+              </div>
+
             </div>
       </main>
     </>
