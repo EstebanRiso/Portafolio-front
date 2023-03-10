@@ -12,6 +12,7 @@ export default function Home() {
   
   const myRef = useRef(null);
   const myRef2 = useRef(null);
+  const myRef3 = useRef(null);
 
   const [showNavbar, setShowNavbar] = useState(true);
 
@@ -49,7 +50,7 @@ export default function Home() {
 
   function handleScroll() {
     const scrollY = window.scrollY;
-    if (scrollY > 650) {
+    if (scrollY > 625) {
       setShowNavbar(false);
     } else {
       setShowNavbar(true);
@@ -94,17 +95,20 @@ export default function Home() {
     const image_src='/stiv_'+iterator+'.png'
 
     return <>
-              <div className={`${styles.image_container} ${loaded? styles.loaded : ''}`}>
-                  <Image  
-                      src={image_src} 
-                      width={620} 
-                      height={480}
-                      priority={true}
-                      onLoadingComplete={() => setLoaded(true)}
-                      alt={'esteban_riso'}
-                      style={{display:'block', position: 'relative', zIndex: '1', top:'120px'}}
-                  />
+             
+                  <div className={`${styles.anim} ${loaded? styles.loaded : ''}`}>
+                    <Image  
+                        className={styles.image_styles}
+                        src={image_src} 
+                        width={620} 
+                        height={480}
+                        priority={true}
+                        onLoadingComplete={() => setLoaded(true)}
+
+                        alt={'Esteban Risopatron'}
+                    />
                 </div>
+            
             </>
   }
 
@@ -120,18 +124,19 @@ export default function Home() {
   return (
     <>
       <Head>
-          Bienvenido al Portafolio de Esteban Risopatrón
+          <link rel="icon" href="/icono.ico"/>
+          <title>Bienvenido al Portafolio de Esteban Risopatrón</title>
       </Head>
       <main className={styles.main}>
         <nav style={{ display: showNavbar ? 'flex' : 'none' }} className={styles.hud}>
-            <button className={styles.item_hud}>¿Quién soy?</button>
-            <button className={styles.item_hud} onClick={()=>scrollToRef(myRef)}>Proyectos</button>
-            <button className={styles.item_hud} onClick={()=>scrollToRef(myRef2)}>Contacto</button>
+            <button className={styles.item_hud} onClick={()=>scrollToRef(myRef)}>¿Quién soy?</button>
+            <button className={styles.item_hud} onClick={()=>scrollToRef(myRef2)}>Proyectos</button>
+            <button className={styles.item_hud} onClick={()=>scrollToRef(myRef3)}>Contacto</button>
         </nav>
 
-        <div className={styles.content}> 
+        <div ref={myRef} className={styles.content}> 
 
-              <div className={styles.imagen_holder}>
+              <div className={styles.content_holder}>
                  <Image  
                       src={'/logo.png'} 
                       priority={true}
@@ -151,7 +156,7 @@ export default function Home() {
               </div>
         
               <div className={styles.presentacion2}>
-                  <h1 ref={myRef} className={styles.titular}>PROYECTOS</h1>
+                  <h1 ref={myRef2} className={styles.titular}>PROYECTOS</h1>
                   <br></br><br></br> <br></br><br></br>    
                   <p className={styles.subtitulo}>Reconocimiento de Imagenes</p>
                     <button className={styles.proyectos_button} onClick={() => {handleButtonClick('button1'); genArrow('direccion1')}}>
@@ -204,7 +209,7 @@ export default function Home() {
               </div>
               
               <div className={styles.presentacion2}>
-                <h1 ref={myRef2} className={styles.titular}>CONTACTO</h1>
+                <h1 ref={myRef3} className={styles.titular}>CONTACTO</h1>
               </div>
 
             </div>

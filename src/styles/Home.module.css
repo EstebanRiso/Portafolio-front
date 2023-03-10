@@ -12,9 +12,9 @@
   flex-flow:column;
 }
 
-.imagen_holder{
+.content_holder{
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   flex-flow: row;
   align-content:center;
@@ -85,8 +85,6 @@
 
 }
 
-
-
 .item_hud:hover {
   color:white;
   font-size: 25px;
@@ -134,11 +132,29 @@
   top: 5px
 }
 
-.image_container {
+.image_container{
+  display:flex;
+  flex-flow:column;
+}
+
+
+
+.anim{
+  display: flex;
+  flex-flow: row;
+  height: 100vh;
   opacity: 0;
   transition: opacity 0.75s;
 }
-.image_container.loaded {
+
+
+.image_styles{
+  align-self: flex-end;
+  z-index:1;
+}
+
+
+.anim.loaded {
   opacity: 1;
 }
 
