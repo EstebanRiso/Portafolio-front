@@ -124,7 +124,7 @@ export default function Home() {
   return (
     <>
       <Head>
-          <link rel='icon' href='/icono.ico'/>
+          <link rel='icon' href='/favicon.ico'/>
           <title>Bienvenido al Portafolio de Esteban Risopatrón</title>
       </Head>
       <main className={styles.main}>
